@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>מצרכן לבונה · בנה אפליקציות בעידן ה-AI עם דוד אוחיון</title>
+<meta name="description" content="קורס דיגיטלי שמלמד מתחילים גמורים לבנות אפליקציות מובייל אמיתיות ללקוחות בעידן ה-AI, ללא קוד, בליווי Tech Lead עם 10+ שנות ניסיון.">
+<!-- Open Graph / Social Share -->
+<meta property="og:type" content="website">
+<meta property="og:locale" content="he_IL">
+<meta property="og:title" content="מצרכן לבונה · בנה אפליקציות בעידן ה-AI">
+<meta property="og:description" content="חשבת שצריך שנים כדי לבנות אפליקציה? כבר לא. תלמד לבנות אפליקציות אמיתיות ללקוחות, בלי קוד, בליווי Tech Lead עם 10+ שנות ניסיון.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="מצרכן לבונה · בנה אפליקציות בעידן ה-AI">
+<meta name="twitter:description" content="תלמד לבנות אפליקציות אמיתיות ללקוחות, בלי קוד, בליווי Tech Lead עם 10+ שנות ניסיון.">
+<!-- Meta Pixel Code -->
+<script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','2132323570952002');fbq('track','PageView');</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=2132323570952002&ev=PageView&noscript=1"/></noscript>
+<!-- End Meta Pixel Code -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F4F1E8;
+    --ink:#0A0A0A;
+    --accent:#FFE600;
+    --coral:#FF5436;
+    --white:#FFFFFF;
+    --shadow:6px 6px 0 var(--ink);
+    --shadow-lg:10px 10px 0 var(--ink);
+    --border:4px solid var(--ink);
+    --radius:0px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Heebo',system-ui,sans-serif;
+    background:var(--paper);
+    color:var(--ink);
+    line-height:1.55;
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+  /* paper texture grid */
+  body::before{
+    content:"";
+    position:fixed;inset:0;
+    background-image:linear-gradient(rgba(10,10,10,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(10,10,10,.04) 1px,transparent 1px);
+    background-size:40px 40px;
+    pointer-events:none;z-index:0;
+  }
+  .wrap{max-width:1100px;margin:0 auto;padding:0 20px;position:relative;z-index:1;}
+  a{color:inherit;}
+  img{max-width:100%;display:block;}
+
+  /* Buttons */
+  .btn{
+    display:inline-flex;align-items:center;gap:.5rem;
+    font-family:'Heebo';font-weight:900;font-size:1.25rem;
+    background:var(--accent);color:var(--ink);
+    border:var(--border);
+    padding:18px 36px;
+    box-shadow:var(--shadow);
+    cursor:pointer;text-decoration:none;
+    transition:transform .08s ease,box-shadow .08s ease;
+    line-height:1;
+  }
+  .btn:hover{transform:translate(-3px,-3px);box-shadow:9px 9px 0 var(--ink);}
+  .btn:active{transform:translate(3px,3px);box-shadow:2px 2px 0 var(--ink);}
+  .btn:focus-visible{outline:4px solid var(--coral);outline-offset:4px;}
+  .btn-coral{background:var(--coral);color:var(--white);}
+
+  /* Section scaffolding */
+  section{padding:70px 0;position:relative;z-index:1;}
+  .eyebrow{
+    display:inline-block;font-weight:900;font-size:.95rem;letter-spacing:.04em;
+    background:var(--ink);color:var(--accent);
+    padding:6px 14px;border:var(--border);box-shadow:4px 4px 0 var(--coral);
+    margin-bottom:22px;
+  }
+  h2.sec-title{
+    font-weight:900;font-size:clamp(2rem,6vw,3.4rem);line-height:1.05;
+    letter-spacing:-.02em;margin-bottom:30px;
+  }
+  .hl{background:var(--accent);padding:0 .15em;box-decoration-break:clone;-webkit-box-decoration-break:clone;}
+
+  /* HERO */
+  .hero{padding-top:50px;padding-bottom:50px;}
+  .hero-top{
+    display:flex;justify-content:space-between;align-items:center;
+    margin-bottom:46px;flex-wrap:wrap;gap:14px;
+  }
+  .brand{font-weight:900;font-size:1.4rem;letter-spacing:-.01em;display:flex;align-items:center;gap:10px;}
+  .brand .dot{width:18px;height:18px;background:var(--coral);border:3px solid var(--ink);display:inline-block;}
+  .hero h1{
+    font-weight:900;font-size:clamp(2.3rem,8vw,5rem);line-height:1.02;
+    letter-spacing:-.03em;margin-bottom:26px;
+  }
+  .hero h1 .pop{
+    display:inline-block;background:var(--coral);color:var(--white);
+    padding:2px 16px;border:var(--border);box-shadow:var(--shadow);transform:rotate(-2deg);
+    margin-top:8px;
+  }
+  .hero-sub{
+    font-size:clamp(1.05rem,2.4vw,1.4rem);font-weight:500;max-width:760px;
+    margin-bottom:38px;line-height:1.6;
+  }
+  .hero-cta-row{display:flex;gap:16px;align-items:center;flex-wrap:wrap;}
+  .hero-note{font-weight:700;font-size:.95rem;display:flex;align-items:center;gap:8px;}
+  .hero-note .tick{background:var(--ink);color:var(--accent);width:26px;height:26px;display:inline-flex;align-items:center;justify-content:center;border:2px solid var(--ink);font-weight:900;}
+
+  /* TRUST STRIP */
+  .trust{background:var(--ink);color:var(--paper);padding:0;border-top:var(--border);border-bottom:var(--border);}
+  .trust-inner{display:flex;flex-wrap:wrap;justify-content:space-around;gap:18px;padding:26px 20px;text-align:center;}
+  .trust-item{flex:1 1 180px;}
+  .trust-item .num{font-weight:900;font-size:2rem;color:var(--accent);line-height:1;}
+  .trust-item .lab{font-weight:700;font-size:.95rem;margin-top:6px;}
+
+  /* AUTHORITY */
+  .auth-card{
+    background:var(--white);border:var(--border);box-shadow:var(--shadow-lg);
+    padding:40px;display:grid;grid-template-columns:auto 1fr;gap:34px;align-items:start;
+  }
+  .auth-photo{
+    width:150px;height:150px;background:var(--accent);border:var(--border);
+    display:flex;align-items:center;justify-content:center;
+    font-weight:900;font-size:3.4rem;box-shadow:6px 6px 0 var(--coral);
+  }
+  .auth-name{font-weight:900;font-size:1.9rem;line-height:1.05;}
+  .auth-role{font-weight:800;font-size:1.05rem;color:var(--coral);margin:6px 0 18px;}
+  .auth-list{list-style:none;display:flex;flex-direction:column;gap:10px;margin-bottom:24px;}
+  .auth-list li{font-weight:500;display:flex;gap:10px;align-items:flex-start;}
+  .auth-list li::before{content:"";flex:0 0 auto;width:14px;height:14px;background:var(--ink);margin-top:7px;}
+  .auth-quote{
+    border-right:8px solid var(--coral);background:var(--accent);
+    padding:18px 22px;font-weight:800;font-size:1.2rem;line-height:1.4;
+    box-shadow:var(--shadow);
+  }
+
+  /* STEPS */
+  .steps-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:24px;}
+  .step{
+    background:var(--white);border:var(--border);box-shadow:var(--shadow);
+    padding:26px;position:relative;transition:transform .08s ease,box-shadow .08s ease;
+  }
+  .step:hover{transform:translate(-3px,-3px);box-shadow:9px 9px 0 var(--ink);}
+  .step .n{
+    position:absolute;top:-22px;right:18px;
+    width:48px;height:48px;background:var(--coral);color:var(--white);
+    border:var(--border);display:flex;align-items:center;justify-content:center;
+    font-weight:900;font-size:1.4rem;box-shadow:4px 4px 0 var(--ink);
+  }
+  .step h3{font-weight:900;font-size:1.25rem;margin:10px 0 8px;line-height:1.2;}
+  .step p{font-weight:500;font-size:1rem;}
+
+  /* WHY NOW */
+  .why{background:var(--coral);color:var(--white);border-top:var(--border);border-bottom:var(--border);}
+  .why .sec-title{color:var(--white);}
+  .why .eyebrow{background:var(--white);color:var(--coral);box-shadow:4px 4px 0 var(--ink);}
+  .why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:22px;}
+  .why-card{background:var(--ink);color:var(--paper);border:4px solid var(--white);padding:24px;box-shadow:6px 6px 0 rgba(0,0,0,.35);}
+  .why-card h3{font-weight:900;font-size:1.2rem;color:var(--accent);margin-bottom:8px;}
+  .why-card p{font-weight:500;}
+
+  /* FOR WHOM */
+  .whom-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:22px;}
+  .whom{background:var(--white);border:var(--border);box-shadow:var(--shadow);padding:26px;}
+  .whom .ico{font-size:2rem;margin-bottom:10px;display:block;}
+  .whom h3{font-weight:900;font-size:1.15rem;margin-bottom:8px;}
+  .whom p{font-weight:500;}
+
+  /* FAQ */
+  .faq-item{
+    background:var(--white);border:var(--border);box-shadow:var(--shadow);
+    margin-bottom:16px;overflow:hidden;
+  }
+  .faq-q{
+    width:100%;text-align:right;background:none;border:none;cursor:pointer;
+    font-family:'Heebo';font-weight:900;font-size:1.15rem;color:var(--ink);
+    padding:20px 24px;display:flex;justify-content:space-between;align-items:center;gap:14px;
+  }
+  .faq-q:focus-visible{outline:4px solid var(--coral);outline-offset:-4px;}
+  .faq-q .plus{
+    flex:0 0 auto;width:32px;height:32px;background:var(--accent);border:3px solid var(--ink);
+    display:flex;align-items:center;justify-content:center;font-size:1.5rem;font-weight:900;
+    transition:transform .2s ease;
+  }
+  .faq-item[open] .plus{transform:rotate(45deg);background:var(--coral);color:var(--white);}
+  .faq-a{padding:0 24px 22px;font-weight:500;font-size:1.05rem;}
+  details>summary{list-style:none;}
+  details>summary::-webkit-details-marker{display:none;}
+
+  /* FORM */
+  .form-sec{background:var(--ink);color:var(--paper);border-top:var(--border);}
+  .form-card{
+    background:var(--accent);color:var(--ink);border:var(--border);
+    box-shadow:var(--shadow-lg);padding:40px;max-width:620px;margin:0 auto;
+  }
+  .form-card h2{font-weight:900;font-size:clamp(1.8rem,5vw,2.8rem);line-height:1.05;margin-bottom:12px;}
+  .form-card .lead{font-weight:600;font-size:1.1rem;margin-bottom:28px;}
+  .field{margin-bottom:20px;}
+  .field label{display:block;font-weight:800;margin-bottom:8px;font-size:1.05rem;}
+  .field input{
+    width:100%;font-family:'Heebo';font-weight:600;font-size:1.1rem;
+    padding:16px;border:var(--border);background:var(--white);color:var(--ink);
+    box-shadow:inset 3px 3px 0 rgba(10,10,10,.08);
+  }
+  .field input:focus{outline:none;box-shadow:0 0 0 4px var(--coral);}
+  .field input.err{box-shadow:0 0 0 4px var(--coral);}
+  .err-msg{color:var(--coral);font-weight:800;font-size:.9rem;margin-top:6px;display:none;}
+  .err-msg.show{display:block;}
+  .form-card .btn{width:100%;justify-content:center;font-size:1.35rem;background:var(--ink);color:var(--accent);}
+  .form-card .btn:hover{box-shadow:9px 9px 0 var(--coral);}
+  .privacy{font-weight:600;font-size:.85rem;margin-top:16px;text-align:center;opacity:.85;}
+
+  /* FOOTER */
+  footer{background:var(--paper);text-align:center;padding:40px 20px;border-top:var(--border);}
+  .credit{
+    display:inline-block;font-weight:900;font-size:1.05rem;
+    background:var(--ink);color:var(--accent);padding:10px 22px;border:var(--border);box-shadow:5px 5px 0 var(--coral);
+  }
+
+  @media (max-width:680px){
+    .auth-card{grid-template-columns:1fr;gap:24px;padding:28px;}
+    .auth-photo{width:110px;height:110px;font-size:2.6rem;}
+    .form-card{padding:28px;}
+    .step .n{right:14px;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *{scroll-behavior:auto!important;transition:none!important;}
+    .btn:hover,.step:hover{transform:none;}
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-top">
+      <div class="brand"><span class="dot"></span>מצרכן לבונה</div>
+      <a href="#form" class="btn" style="font-size:1rem;padding:12px 22px;">הרשמה מוקדמת ←</a>
+    </div>
+    <span class="eyebrow">קורס דיגיטלי · שיטה AI-Native</span>
+    <h1>חשבת שצריך שנים של לימודים כדי לבנות אפליקציה?<br><span class="pop">כבר לא.</span></h1>
+    <p class="hero-sub">ה-AI שינה את המשחק · תלמד לבנות אפליקציות אמיתיות ללקוחות, מהר ובשיטה מסודרת, בליווי Tech Lead עם 10+ שנות ניסיון.</p>
+    <div class="hero-cta-row">
+      <a href="#form" class="btn btn-coral">הרשמה מוקדמת ←</a>
+      <span class="hero-note"><span class="tick" aria-hidden="true">✓</span> בלי ניסיון קודם · בלי קוד</span>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST STRIP -->
+<section class="trust" aria-label="נתוני אמון" style="padding:0;">
+  <div class="trust-inner">
+    <div class="trust-item"><div class="num">10+</div><div class="lab">שנות ניסיון בתעשייה</div></div>
+    <div class="trust-item"><div class="num">7</div><div class="lab">שלבים ברורים מאפס לתוצר</div></div>
+    <div class="trust-item"><div class="num">0</div><div class="lab">שורות קוד שתצטרך לכתוב</div></div>
+    <div class="trust-item"><div class="num">AI</div><div class="lab">שיטה מותאמת לעידן החדש</div></div>
+  </div>
+</section>
+
+<!-- AUTHORITY -->
+<section>
+  <div class="wrap">
+    <span class="eyebrow">מי מלמד אותך</span>
+    <h2 class="sec-title">לא עוד "מומחה" מהאינטרנט.<br><span class="hl">Tech Lead אמיתי מהשטח.</span></h2>
+    <div class="auth-card">
+      <div class="auth-photo" aria-hidden="true">דא</div>
+      <div>
+        <div class="auth-name">דוד אוחיון</div>
+        <div class="auth-role">Mobile App Developer &amp; AI Solution Architect</div>
+        <ul class="auth-list">
+          <li>Tech Lead עם למעלה מ-10 שנות ניסיון</li>
+          <li>לשעבר CTO ומייסד-שותף</li>
+          <li>הוביל צוותי פיתוח וארכיטקטורה</li>
+          <li>מומחה Android, Flutter, FlutterFlow ואינטגרציות AI/LLM</li>
+          <li>בנה אפליקציות enterprise מקצה לקצה</li>
+        </ul>
+        <div class="auth-quote">"לא תיאוריה. השיטות שעובדות בשטח, מותאמות למתחילים בעזרת AI."</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 7 STEPS -->
+<section>
+  <div class="wrap">
+    <span class="eyebrow">המסלול שלך</span>
+    <h2 class="sec-title">מה תבנה ב-<span class="hl">7 שלבים</span></h2>
+    <div class="steps-grid">
+      <div class="step"><span class="n">1</span><h3>התחלה ומיינדסט בונה</h3><p>עוברים מ"צרכן" של אפליקציות ל"בונה". המיינדסט והכלים שמתחילים איתם.</p></div>
+      <div class="step"><span class="n">2</span><h3>יסודות</h3><p>לוגיקת אפליקציה וכלי AI: מבינים איך אפליקציה עובדת ואיך ה-AI עושה בשבילך את העבודה הכבדה.</p></div>
+      <div class="step"><span class="n">3</span><h3>שלד ראשון</h3><p>אפליקציה עובדת כבר ביום הראשון. רואים תוצאה אמיתית במסך מהשלב הראשון.</p></div>
+      <div class="step"><span class="n">4</span><h3>בנייה</h3><p>פיצ'רים, דאטה וחיבורים. הופכים את השלד לאפליקציה מלאה עם פונקציונליות אמיתית.</p></div>
+      <div class="step"><span class="n">5</span><h3>חיבור, בדיקה והשקה</h3><p>מחברים את כל החלקים, בודקים שהכל עובד ומשיקים לעולם.</p></div>
+      <div class="step"><span class="n">6</span><h3>האפליקציה החיה הראשונה שלך</h3><p>תוצר גמור שאפשר להראות, להשתמש בו ולהיות גאה בו.</p></div>
+      <div class="step"><span class="n">7</span><h3>מסחור ללקוח משלם</h3><p>הופכים את היכולת לעסק: בונים אפליקציות ללקוחות אמיתיים ויוצרים הכנסה וחופש.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY NOW -->
+<section class="why">
+  <div class="wrap">
+    <span class="eyebrow">חלון הזדמנות</span>
+    <h2 class="sec-title">למה דווקא עכשיו</h2>
+    <div class="why-grid">
+      <div class="why-card"><h3>ה-AI פתח את הדלת</h3><p>מה שדרש פעם צוות מפתחים ושנות לימוד, אתה עושה היום לבד בעזרת כלי AI. החסם הטכני נפל.</p></div>
+      <div class="why-card"><h3>הביקוש מתפוצץ</h3><p>כל עסק רוצה אפליקציה. מעט מאוד יודעים לבנות מהר בעידן ה-AI. אתה יכול להיות בצד של ההיצע.</p></div>
+      <div class="why-card"><h3>חלון של מקדימים</h3><p>מי שנכנס עכשיו תופס יתרון לפני שכולם מבינים מה אפשר לעשות. בעוד שנתיים זה כבר יהיה מובן מאליו.</p></div>
+      <div class="why-card"><h3>חופש אמיתי</h3><p>מיומנות שמייצרת הכנסה מכל מקום בעולם, מבוססת על הדבר היחיד שלא הולך לשום מקום: היכולת לבנות.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOR WHOM -->
+<section>
+  <div class="wrap">
+    <span class="eyebrow">בדיקת התאמה</span>
+    <h2 class="sec-title">למי זה <span class="hl">מתאים</span></h2>
+    <div class="whom-grid">
+      <div class="whom"><span class="ico" aria-hidden="true">🚀</span><h3>מתחילים גמורים</h3><p>אין לך רקע בתכנות ובכלל לא בטוח שאתה "טיפוס טכני". בדיוק בשבילך נבנתה השיטה.</p></div>
+      <div class="whom"><span class="ico" aria-hidden="true">💼</span><h3>מי שרוצה הכנסה נוספת</h3><p>מחפש מקצוע או צד-עסק שמייצר כסף, שאפשר ללמוד מהבית ולהפעיל בקצב שלך.</p></div>
+      <div class="whom"><span class="ico" aria-hidden="true">🧠</span><h3>יזמים ובעלי רעיונות</h3><p>יש לך רעיון לאפליקציה אבל אין לך מי שיבנה אותו. עכשיו תבנה אותו בעצמך.</p></div>
+      <div class="whom"><span class="ico" aria-hidden="true">🔁</span><h3>מי שרוצה להחליף כיוון</h3><p>נמאס לך מהשגרה ואתה רוצה להיכנס לעולם הטכנולוגיה דרך דלת שנפתחה רק עכשיו.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section>
+  <div class="wrap">
+    <span class="eyebrow">שאלות נפוצות</span>
+    <h2 class="sec-title">מה שחשוב לדעת</h2>
+
+    <details class="faq-item">
+      <summary class="faq-q">באמת אפשר בלי לדעת לתכנת?<span class="plus" aria-hidden="true">+</span></summary>
+      <div class="faq-a">כן. הקורס בנוי במיוחד למתחילים גמורים. במקום לכתוב קוד, אתה לומד לנהל ולהכוון כלי AI שעושים את העבודה הטכנית, בליווי צמוד שלב אחר שלב.</div>
+    </details>
+
+    <details class="faq-item">
+      <summary class="faq-q">כמה זמן עד שאבנה אפליקציה ראשונה?<span class="plus" aria-hidden="true">+</span></summary>
+      <div class="faq-a">אפליקציה עובדת ראשונה תראה על המסך כבר בשלב הראשון. עד סוף המסלול תהיה לך אפליקציה חיה ומלאה שאפשר להראות ולהשתמש בה.</div>
+    </details>
+
+    <details class="faq-item">
+      <summary class="faq-q">איך זה הופך להכנסה?<span class="plus" aria-hidden="true">+</span></summary>
+      <div class="faq-a">השלב האחרון מוקדש למסחור: איך לוקחים את היכולת ובונים אפליקציות ללקוחות משלמים, איך מתמחרים ואיך הופכים את זה למקור הכנסה וחופש.</div>
+    </details>
+
+    <details class="faq-item">
+      <summary class="faq-q">מי עומד מאחורי הקורס?<span class="plus" aria-hidden="true">+</span></summary>
+      <div class="faq-a">דוד אוחיון, Tech Lead עם 10+ שנות ניסיון, לשעבר CTO ומייסד-שותף, שבנה אפליקציות enterprise מקצה לקצה. אתה לומד את השיטות שעובדות בשטח, לא תיאוריה.</div>
+    </details>
+
+    <details class="faq-item">
+      <summary class="faq-q">מה אני צריך כדי להתחיל?<span class="plus" aria-hidden="true">+</span></summary>
+      <div class="faq-a">מחשב, חיבור לאינטרנט ורצון ללמוד. את כל השאר תקבל בתוך הקורס, צעד אחר צעד.</div>
+    </details>
+  </div>
+</section>
+
+<!-- LEAD FORM -->
+<section class="form-sec" id="form">
+  <div class="wrap">
+    <div class="form-card">
+      <h2>רוצה לבנות אפליקציות בעידן ה-AI?</h2>
+      <p class="lead">השאר פרטים ונחזור אליך עם כל המידע על הקורס וההרשמה המוקדמת.</p>
+      <form id="leadForm" novalidate>
+        <div class="field">
+          <label for="fullname">שם מלא</label>
+          <input type="text" id="fullname" name="fullname" autocomplete="name" placeholder="ישראל ישראלי" aria-required="true" aria-describedby="err-name">
+          <div class="err-msg" id="err-name">נא להזין שם מלא</div>
+        </div>
+        <div class="field">
+          <label for="phone">טלפון</label>
+          <input type="tel" id="phone" name="phone" autocomplete="tel" inputmode="numeric" placeholder="050-0000000" aria-required="true" aria-describedby="err-phone">
+          <div class="err-msg" id="err-phone">נא להזין מספר טלפון תקין</div>
+        </div>
+        <button type="submit" class="btn">אני רוצה פרטים ←</button>
+        <p class="privacy">בלחיצה על הכפתור תועבר לוואטסאפ להשלמת הפנייה. הפרטים נשמרים אצלנו בלבד.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span class="credit">נבנה ע"י הלל</span>
+</footer>
+
+<script>
+(function(){
+  var form = document.getElementById('leadForm');
+  var nameI = document.getElementById('fullname');
+  var phoneI = document.getElementById('phone');
+  var errName = document.getElementById('err-name');
+  var errPhone = document.getElementById('err-phone');
+
+  function setErr(input, msgEl, show){
+    if(show){ input.classList.add('err'); msgEl.classList.add('show'); input.setAttribute('aria-invalid','true'); }
+    else { input.classList.remove('err'); msgEl.classList.remove('show'); input.removeAttribute('aria-invalid'); }
+  }
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    var ok = true;
+    var nameVal = nameI.value.trim();
+    var phoneVal = phoneI.value.trim();
+    var phoneDigits = phoneVal.replace(/\D/g,'');
+
+    if(nameVal.length < 2){ setErr(nameI, errName, true); ok = false; } else { setErr(nameI, errName, false); }
+    if(phoneDigits.length < 9){ setErr(phoneI, errPhone, true); ok = false; } else { setErr(phoneI, errPhone, false); }
+
+    if(!ok){
+      (nameVal.length < 2 ? nameI : phoneI).focus();
+      return;
+    }
+
+    try { if(typeof fbq === 'function'){ fbq('track','Lead'); } } catch(err){}
+
+    var msg = "היי, שמי " + nameVal + ", אני רוצה פרטים על הקורס לבניית אפליקציות עם דוד";
+    var url = "https://wa.me/972549116092?text=" + encodeURIComponent(msg);
+    window.location.href = url;
+  });
+})();
+</script>
+
+</body>
+</html>
